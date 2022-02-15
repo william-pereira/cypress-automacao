@@ -4,7 +4,8 @@
   "description": "Automação de testes com cypress + Arquitetura Page Objects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy_open": "cypress open"
   },
   "repository": {
     "type": "git",

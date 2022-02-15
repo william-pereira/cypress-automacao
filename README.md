@@ -10,3 +10,9 @@ Automação de testes com cypress + Arquitetura Page Objects
 -- npm init -y
 -- npm install cypress --save-dev
 ```
+
+### Após todas as instalações rode o comando
+
+```
+npm run cy_open
+```
