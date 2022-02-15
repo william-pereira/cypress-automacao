@@ -1,0 +1,22 @@
+{
+  "name": "cypress-automacao",
+  "version": "1.0.0",
+  "description": "Automação de testes com cypress + Arquitetura Page Objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/william-pereira/cypress-automacao.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/william-pereira/cypress-automacao/issues"
+  },
+  "homepage": "https://github.com/william-pereira/cypress-automacao#readme",
+  "devDependencies": {
+    "cypress": "^9.5.0"
+  }
+}
