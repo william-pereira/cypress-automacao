@@ -1,42 +1,35 @@
 /// <reference types='cypress' />
+
+import loc from '../../support/locators'
+
 describe ('logged in user', () => {
-  // after(() => {
-  // cy.reload()
-  // cy.visit('https://barrigareact.wcaquino.me')
-  // cy.get('[data-test="email"]').type('will@will')
-  // cy.get('[data-test="passwd"]').type('1')
-  // cy.get('.btn').click()
-  // cy.get('.toast-message').should('have.text', 'Bem vindo, willl!')
-  // cy.get('[data-test="menu-settings"]').click()
-  // cy.xpath('//div[@class="dropdown-menu bg-dark show"]/a[1]').click()
-  // cy.xpath('//tbody/tr/td[contains(text(),\'Uma conta de Internet Will ALTERADA\')]//following-sibling::td/i[@class=\'far fa-trash-alt\']').click()
-  // })
-
-it('Login', () => {
+ before(() => {
   cy.visit('https://barrigareact.wcaquino.me')
-  cy.get('[data-test="email"]').type('will@will')
-  cy.get('[data-test="passwd"]').type('1')
-  cy.get('.btn').click()
-  cy.get('.toast-message').should('have.text', 'Bem vindo, willl!')
-})
+  cy.get(loc.LOGIN.USER).type('will@will')
+  cy.get(loc.LOGIN.PASSWORD).type('1')
+  cy.get(loc.LOGIN.BUTTON_LOGIN).click()
+  cy.get(loc.MASSAGE).should('contain', 'Bem vindo')
+ })
 
-it('Inserting an account', () => {
-  cy.get('[data-test="menu-settings"]').click()
-  cy.xpath('//div[@class="dropdown-menu bg-dark show"]/a[1]').click()
-  cy.get('[data-test="nome"]').type('Uma conta de Internet Will')
-  cy.xpath('//div[@class="form-group col-2"]/button[@alt="Salvar"]').click()
-  cy.get('.toast-success > .toast-message').should('have.text','Conta inserida com sucesso!')
-  cy.xpath('//tbody/tr/td[contains(text(),"Uma conta de Internet Will")]').should('exist')
+ it('Inserting an account', () => {
+  cy.get(loc.MENU.SETTINGS).click()
+  cy.xpath(loc.MENU.CONTAS).click()
+  cy.get(loc.CONTAS.NOME).type('Uma conta de Internet Will')
+  cy.get(loc.CONTAS.BTN_SALVAR).click()
+  cy.get(loc.MASSAGE).should('contain','sucesso!')
+  // cy.xpath(loc.MASSAGES.NOME_CONTA).should('exist')
 })
 
 it('Changing an account', () => {
-  cy.get('[data-test="menu-settings"]').click()
-  cy.xpath('//div[@class="dropdown-menu bg-dark show"]/a[1]').click()
-  cy.xpath('//tbody/tr/td[contains(text(),\'Uma conta de Internet Will\')]//following-sibling::td/i[@class=\'far fa-edit\']').should('exist').click()
-  cy.get('[data-test="nome"]').clear().type('Uma conta de Internet Will ALTERADA')
-  cy.xpath('//div[@class="form-group col-2"]/button[@alt="Salvar"]').click()
-  cy.get('.animated > .toast-message').should('have.text', 'Conta atualizada com sucesso!')
-  cy.xpath('//tbody/tr/td[contains(text(),"Uma conta de Internet Will ALTERADA")]').should('exist')
+  cy.get(loc.MENU.SETTINGS).click()
+  cy.xpath(loc.MENU.CONTAS).click()
+  cy.xpath(loc.CONTAS.XP_BTN_ALTERAR).should('exist').click()
+  cy.get(loc.CONTAS.NOME)
+      .clear()
+      .type('Uma conta de Internet Will ALTERADA')
+  cy.get(loc.CONTAS.BTN_SALVAR).click()
+  cy.get(loc.MASSAGE).should('contain', 'sucesso!')
+  // cy.xpath('//tbody/tr/td[contains(text(),"Uma conta de Internet Will ALTERADA")]').should('exist')
 })
 
 it('Charging the same account', () => {
