@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/william-pereira/cypress-automacao#readme",
   "devDependencies": {
-    "cypress": "^9.5.0"
+    "cypress": "^9.5.0",
+    "cypress-xpath": "^1.6.2"
   }
 }
